@@ -1,6 +1,7 @@
 ﻿using KafkaBus.Abstractions.Consumer;
 using KafkaBus.Domain.Attributes;
 using KafkaBus.Domain.Consumer;
+using KafkaBus.Shared.Consumer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -45,6 +46,10 @@ public class ConsumerHostedService<TKey, TMessage>(IConsumerConfiguration<TKey, 
         await Task.Yield();
         var builder = await configuration.GenerateBuilderAsync();
         var kafkaConsumer = builder.Build();
+
+        if (consumer is MessageConsumer<TKey, TMessage> messageConsumer)
+            messageConsumer.SetConsumer(kafkaConsumer);
+
         kafkaConsumer.Subscribe(configuration.Topic);
         try
         {
@@ -52,7 +57,7 @@ public class ConsumerHostedService<TKey, TMessage>(IConsumerConfiguration<TKey, 
             {
                 var result = kafkaConsumer.Consume(stoppingToken);
                 if (result?.Message is null) continue;
-                var context = new ConsumeContext<TKey, TMessage>(result.Message.Key, result.Message.Value, result.Topic, result.Partition.Value, result.Offset.Value, result.Message.Headers, result.Message.Timestamp.UtcDateTime);
+                var context = new ConsumeContext<TKey, TMessage>(result.Message.Key, result.Message.Value, result.Topic, result.Partition.Value, result.Offset.Value, result.Message.Headers, result.Message.Timestamp.UtcDateTime, result.TopicPartitionOffset);
                 try
                 {
                     await pipeline(context, stoppingToken);

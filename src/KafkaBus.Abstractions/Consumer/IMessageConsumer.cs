@@ -1,4 +1,4 @@
-﻿using KafkaBus.Domain.Consumer;
+﻿using KafkaBus.Shared.Consumer;
 
 namespace KafkaBus.Abstractions.Consumer;
 
