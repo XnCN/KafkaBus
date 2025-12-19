@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Scrutor" />
+	<PackageReference Include="Confluent.Kafka" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KafkaBus.Abstractions\KafkaBus.Abstractions.csproj" />
+    <ProjectReference Include="..\KafkaBus.Core\KafkaBus.Core.csproj" />
+    <ProjectReference Include="..\KafkaBus.Shared\KafkaBus.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
