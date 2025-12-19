@@ -9,7 +9,15 @@
   <ItemGroup>
     <Folder Include="Consumer\" />
     <Folder Include="Serialization\" />
-    <Folder Include="Producer\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KafkaBus.Abstractions\KafkaBus.Abstractions.csproj" />
+    <ProjectReference Include="..\KafkaBus.Shared\KafkaBus.Shared.csproj" />
   </ItemGroup>
 
 </Project>

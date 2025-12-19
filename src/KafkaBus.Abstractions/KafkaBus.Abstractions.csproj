@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KafkaBus.Domain\KafkaBus.Shared.csproj" />
+    <ProjectReference Include="..\KafkaBus.Shared\KafkaBus.Shared.csproj" />
   </ItemGroup>
 
 </Project>
