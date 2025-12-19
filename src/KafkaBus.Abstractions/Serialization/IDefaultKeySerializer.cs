@@ -1,3 +1,3 @@
 ﻿namespace KafkaBus.Abstractions.Serialization;
 
-public interface IDefaultKeyDeserializer { }
+public interface IDefaultKeySerializer { }
