@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/KafkaBus.Abstractions/KafkaBus.Abstractions.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
