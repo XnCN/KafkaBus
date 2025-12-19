@@ -6,7 +6,6 @@
 	<Description>Lightweight Kafka producer/consumer library with middleware support for .NET</Description>
 	<PackageTags>kafka;messaging;producer;consumer;middleware;confluent</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
