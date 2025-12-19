@@ -43,8 +43,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          //editUrl: "",
         },
         blog: {
           showReadingTime: true,
@@ -54,8 +53,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          //editUrl: "",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -76,10 +74,10 @@ const config: Config = {
     },
     navbar: {
       title: "KafkaBus",
-      logo: {
-        alt: "KafkaBus",
-        src: "img/logo.svg",
-      },
+      // logo: {
+      //   alt: "KafkaBus",
+      //   src: "img/logo.svg",
+      // },
       items: [
         {
           type: "docSidebar",
@@ -108,32 +106,11 @@ const config: Config = {
           ],
         },
         {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
-            },
-          ],
-        },
-        {
           title: "More",
           items: [
             {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/XnCN/KafkaBus",
             },
           ],
         },
