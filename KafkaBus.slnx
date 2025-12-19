@@ -5,8 +5,8 @@
   <Folder Name="/src/">
     <Project Path="src/KafkaBus.Abstractions/KafkaBus.Abstractions.csproj" />
     <Project Path="src/KafkaBus.Core/KafkaBus.Core.csproj" />
-    <Project Path="src/KafkaBus.Domain/KafkaBus.Shared.csproj" />
     <Project Path="src/KafkaBus.Extensions/KafkaBus.Extensions.csproj" />
+    <Project Path="src/KafkaBus.Shared/KafkaBus.Shared.csproj" />
     <Project Path="src/KafkaBus/KafkaBus.csproj" />
   </Folder>
   <Folder Name="/tests/" />
