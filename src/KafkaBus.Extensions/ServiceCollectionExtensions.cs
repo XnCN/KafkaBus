@@ -5,6 +5,7 @@ using KafkaBus.Abstractions.Serialization;
 using KafkaBus.Core.Consumer;
 using KafkaBus.Core.Producer;
 using KafkaBus.Domain.Producer;
+using KafkaBus.Shared.Constants;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -15,9 +16,9 @@ namespace KafkaBus.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddKafkaBusProducers(this IServiceCollection services, IConfiguration configuration, Assembly[] assemblies, Type? defaultKeySerializer = null, Type? defaultValueSerializer = null)
+    public static IServiceCollection AddKafkaBusProducers(this IServiceCollection services, IConfiguration configuration, Assembly[] assemblies, string sectionName = KafkaConfigurationDefaults.ProducerSectionName, Type? defaultKeySerializer = null, Type? defaultValueSerializer = null)
     {
-        services.AddSingleton(configuration.GetSection("Kafka:DefaultProducerSettings").Get<ProducerConfig>() ?? new ProducerConfig());
+        services.AddSingleton(configuration.GetSection(sectionName).Get<ProducerConfig>() ?? new ProducerConfig());
 
         if (defaultKeySerializer is not null)
             services.AddSingleton(typeof(IDefaultKeyDeserializer), defaultKeySerializer);
@@ -31,6 +32,8 @@ public static class ServiceCollectionExtensions
             .AsImplementedInterfaces()
             .WithScopedLifetime());
 
+        services.TryAddScoped(typeof(IProducerConfiguration<,>), typeof(ProducerConfiguration<,>));
+
         services.Scan(scan => scan
         .FromAssemblies(assemblies)
         .AddClasses(c => c.AssignableTo(typeof(IProduceMiddleware<,>)))
@@ -43,11 +46,11 @@ public static class ServiceCollectionExtensions
     }
 
 
-    public static IServiceCollection AddKafkaConsumers(this IServiceCollection services, IConfiguration configuration, Assembly[] assemblies, Type? defaultKeyDeserializer = null, Type? defaultValueDeserializer = null)
+    public static IServiceCollection AddKafkaBusConsumers(this IServiceCollection services, IConfiguration configuration, Assembly[] assemblies, string sectionName = KafkaConfigurationDefaults.ConsumerSectionName, Type? defaultKeyDeserializer = null, Type? defaultValueDeserializer = null)
     {
 
         services.AddSingleton(configuration
-            .GetSection("Kafka:DefaultConsumerSettings")
+            .GetSection(sectionName)
             .Get<ConsumerConfig>() ?? new ConsumerConfig());
 
         if (defaultKeyDeserializer is not null)
